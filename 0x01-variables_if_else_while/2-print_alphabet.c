@@ -6,16 +6,16 @@
  * Return: Always 0 (Success)
  */
 
-int main (void)
+int main(void)
 {
 	char l;
-	
 	l = 'a';
-	while 
-		(l <= 'z'){
-			putchar(l);
-			l++;
-		}
+
+	while (l <= 'z')
+	{
+		putchar(l);
+		l++;
+	}
 	putchar('\n');
 	return (0);
 }
