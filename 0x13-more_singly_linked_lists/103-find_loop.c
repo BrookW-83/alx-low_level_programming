@@ -33,56 +33,5 @@ listint_t *find_listint_loop(listint_t *head)
 		fast = fast->next;
 		slow = (slow->next)->next;
 	}
-
 	return (NULL);
 }
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
-~
--- INSERT --                                                                                                                                                                  0,1           All
-
