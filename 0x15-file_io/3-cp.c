@@ -19,7 +19,8 @@ char *create_buffer(char *file)
 
 	if (buffer == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+		dprintf(STDERR_FILENO,
+			"Error: Can't write to %s\n", file);
 		exit(99);
 	}
 	return (buffer);
@@ -48,6 +49,11 @@ void close_file(int d)
  * @argc: number of arguments
  * @argv: array of pointers to arguments
  * Return: 0 (Success)
+ *
+ * Description: If argument count is incorrect - exit(97)
+ *              If file_l dosen't exist - exit(98)
+ *              If file_r can't be created or written - exit(99)
+ *              If file_r or file_l can't be closed - eixt(100)
  */
 
 int main(int argc, char *argv[])
@@ -68,7 +74,8 @@ int main(int argc, char *argv[])
 	do {
 		if (l == -1 || i == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			dprintf(STDERR_FILENO,
+				"Error: Can't read from file %s\n", argv[1]);
 			free(buffer);
 			exit(98);
 		}
@@ -76,7 +83,8 @@ int main(int argc, char *argv[])
 		j = write(r, buffer, i);
 		if (r == -1 || j == -1)
 		{
-			dprintf(STDERR_FILENO, "ERROR: Can't write to %s\n", argv[2]);
+			dprintf(STDERR_FILENO,
+				"ERROR: Can't write to %s\n", argv[2]);
 			free(buffer);
 			exit(99);
 
