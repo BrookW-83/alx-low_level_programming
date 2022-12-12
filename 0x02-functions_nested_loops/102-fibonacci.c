@@ -24,5 +24,4 @@ int main(void)
 		m = fib;
 		i++;
 	}
-	return (0);
-}
+	return (0);}i
