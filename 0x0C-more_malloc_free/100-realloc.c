@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
  *_realloc - function reallocates a memory block using malloc and free
@@ -11,56 +10,29 @@
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	void *reaptr;
+	char *clone, relloc;
+	unsigned int i;
 
-	if (ptr == NULL)
+	if (ptr != NULL)
+		clone = ptr;
+	else
 	{
-		reaptr = malloc(new_size);
-		if (reaptr == NULL)
-		{
-			free(ptr);
-			return (NULL);
-		}
-		free(ptr);
-		return (reaptr);
+		return (malloc(new_size));
 	}
 	if (new_size == old_size)
 		return (ptr);
 	if (new_size == 0 && ptr != NULL)
 	{
 		free(ptr);
-		return (NULL);
+		return (0);
 	}
-	reaptr = malloc(new_size);
-	if (reaptr == NULL)
+	relloc = malloc(new_size);
+	if (relloc == NULL)
+		return (0);
+	for (i = 0; i < (old_size || i < new_size); i++)
 	{
-		free(ptr);
-		return (NULL);
+		*(relloc + i) = clone[i];
 	}
-	if (new_size > old_size)
-		_memcpy(reaptr, ptr, old_size);
 	free(ptr);
-	return (reaptr);
-}
-
-/**
- * _memcpy - function that copies memory area
- * @dest: dest positions
- * @src: source position
- * @n: size of bytes
- * Return: char
- */
-
-char *_memcpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int i = 0;
-	unsigned int j = 0;
-
-	while (i < n)
-	{
-		*(dest + i) = *(src + j);
-		i += 1;
-		j += 1;
-	}
-	return (dest);
+	return (relloc);
 }
